@@ -1,0 +1,112 @@
+.bgHome{
+  background-image: url("../images/background1.jpg");
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+
+header{
+  margin-bottom: 0;
+}
+
+body{
+  margin-top: 0;
+}
+
+.navbar {
+  height: 100px;
+}
+
+.divHome{
+  width: 600px;
+  height: 700px;
+  text-align: center; 
+  margin-left: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer{
+  background-color:#bfc0c1;
+}
+
+.logo{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  margin: auto;
+
+}
+
+.textoFooter{
+  color: black;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+}
+
+.colecao{
+  background-image: url("../images/background2.jpg");
+  background-repeat: no-repeat;
+  background-size:cover;
+  width: 1600px;
+  height: 1000px;
+}
+
+.tabela{
+  margin-left: 400px;
+  margin-right: 300px;
+  padding-top: 3%;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+.pesquisa{
+  width: 550px;
+}
+
+.btn-estilizado{
+  background-color:#afd58f;
+	color: black;
+}
+
+.bgLogin{
+  background-image: url("../images/backgroundLogin.jpg");
+  background-repeat: no-repeat;
+  background-size:100% 100%;
+  width: 600px;
+  height: 600px;
+}
+
+.cascading-right {
+  margin-right: -50px;
+  background: hsla(0, 0%, 100%, 0.55);
+  backdrop-filter: blur(30px);
+}
+
+@media (max-width: 991.98px) {
+  .cascading-right {
+    margin-right: 0;
+  }
+}
+
+.loginImg{
+  width: 400px;
+  height: 750px;
+  border-radius: 1%;
+}
+
+.form-control:focus {
+  /* box-shadow: 0 0 10px #afd58f; */
+  box-shadow: 0 0 10px #e7e8e6;
+  border-color:#bfc0c1;
+}
+
+.login1{
+  background: hsla(0, 0%, 100%, 0.55);
+  backdrop-filter: blur(30px)
+}

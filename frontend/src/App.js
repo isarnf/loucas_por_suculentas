@@ -1,5 +1,5 @@
-import "./style/App.css";
-import "./routes.js";
+import "./style/Styles.css";
+// import "./routes.js";
 import Router from "./routes.js";
 
 function App() {
