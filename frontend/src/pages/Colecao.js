@@ -30,19 +30,34 @@ function Colecao() {
 				<tbody>
 					<tr>
 					<th scope="row">1</th>
-					<td>Mark</td>
-					<td>Otto</td>
-					<td>@mdo</td>
+					<td></td>
+					<td></td>
+					<td>
+						<button className="btn">
+							<a href="/" >
+								{/* <i className="fa-regular fa-circle-info"></i> */}
+								Detalhar
+							</a>
+						</button>
+					</td>
 					</tr>
 					<tr>
 					<th scope="row">2</th>
-					<td>Jacob</td>
-					<td>Thornton</td>
-					<td>@fat</td>
+					<td></td>
+					<td></td>
+					<td>
+						<button className="btn">
+							<a href="/" >
+								{/* <i className="fa-regular fa-circle-info"></i> */}
+								Detalhar
+							</a>
+						</button>
+					</td>
 					</tr>
 					<tr>
 					<th scope="row">3</th>
-					<td colspan="2">Larry the Bird</td>
+					<td></td>
+					<td></td>
 					<td>
 						<button className="btn">
 							<a href="/" >
