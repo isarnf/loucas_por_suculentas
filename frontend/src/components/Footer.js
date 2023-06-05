@@ -1,7 +1,7 @@
-import succulent from "../images/succulent5.png";
-import succulentLogo from "../images/suculentaLogo.png";
-import instagram from "../images/instagram.png";
-import facebook from "../images/facebook.png";
+import succulent from '../images/succulent5.png';
+import succulentLogo from '../images/suculentaLogo.png';
+import instagram from '../images/instagram.png';
+import facebook from '../images/facebook.png';
 
 export default function Footer(){
 	return (

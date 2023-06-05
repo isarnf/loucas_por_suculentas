@@ -1,5 +1,5 @@
-import succulent from "../images/succulent5.png";
-import succulentLogo from "../images/suculentaLogo.png";
+import succulent from '../images/succulent5.png';
+import succulentLogo from '../images/suculentaLogo.png';
 
 export default function Header(){
 	return (
