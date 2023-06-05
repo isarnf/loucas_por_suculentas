@@ -7,29 +7,29 @@ function Login() {
 	return (
 		<>
             <Header/>
-            <div class="container py-4">
-                <div class="row g-0 align-items-center">
-                <div class="col-lg-6 mb-5 mb-lg-0">
-                    <div class="card cascading-right login1">
-                    <div class="card-body p-5 shadow-5 text-center">
-                        <h2 class="fw-bold mb-5">Login</h2>
+            <div className="container py-4">
+                <div className="row g-0 align-items-center">
+                <div className="col-lg-6 mb-5 mb-lg-0">
+                    <div className="card cascading-right login1">
+                    <div className="card-body p-5 shadow-5 text-center">
+                        <h2 className="fw-bold mb-5">Login</h2>
                         <form>
                     
                         <div class="form-outline mb-4">
-                            <input type="email" id="" class="form-control" />
-                            <label class="form-label" for="">E-mail</label>
+                            <input type="email" id="" className="form-control" />
+                            <label className="form-label" for="">E-mail</label>
                         </div>
 
                         <div class="form-outline mb-4">
-                            <input type="password" id="" class="form-control" />
-                            <label class="form-label" for="">Senha</label>
+                            <input type="password" id="" className="form-control" />
+                            <label className="form-label" for="">Senha</label>
                         </div>
 
                         
-                        <button type="submit" class="btn btn-estilizado btn-block mb-4 me-3">
+                        <button type="submit" className="btn btn-estilizado btn-block mb-4 me-3">
                             Entrar
                         </button>
-                        <button type="submit" class="btn btn-estilizado btn-block mb-4">
+                        <button type="submit" className="btn btn-estilizado btn-block mb-4">
                             Registrar
                         </button>
                         </form>
@@ -37,8 +37,8 @@ function Login() {
                     </div>
                 </div>
 
-                <div class="col-lg-6 mb-5 mb-lg-0">
-                    <img src={loginImage} class="w-100 rounded-4 shadow-4 loginImg" alt=""/>
+                <div className="col-lg-6 mb-5 mb-lg-0">
+                    <img src={loginImage} className="w-100 rounded-4 shadow-4 loginImg" alt=""/>
                 </div>
                 </div>
             </div>
