@@ -1,9 +1,13 @@
+let cors = require('cors');
+
 let express = require("express");
 require("express-async-errors");
 let suculenta = require("./suculenta.js");
 let app = express(); 
 const porta = 12345;
 
+
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}));
 
@@ -40,7 +44,7 @@ app.put("/colecao/editar/:id", async(req, res) => {
 
 app.delete("/colecao/deletar/:id", async(req, res) => {
     try{
-        console.log(`Deletando suculenta: ${req.body.id}) ${req.body.nome_popular}`)
+        console.log(`Deletando suculenta: ${req.params.id})`)
         const suculenta_a_deletar = suculenta.findByPk(req.params.id);
         res.status(200).send(await suculenta_a_deletar.then(suculenta.destroy({
             where: {id: req.params.id},
@@ -54,7 +58,8 @@ app.delete("/colecao/deletar/:id", async(req, res) => {
 
 app.get("/colecao/:id", async(req, res) => {
     try{
-        console.log(`Detalhando suculenta: ${req.body.id}) ${req.body.nome_popular}`)
+        const data = await suculenta.findByPk(req.params.id);
+        console.log(`Detalhando suculenta: ${data.id}, ${data.nome_popular}`)
         res.status(200).send(await suculenta.findByPk(req.params.id));
     }catch{
         console.log(`Não foi possível detalhar suculenta.`);

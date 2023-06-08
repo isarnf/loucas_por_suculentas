@@ -11,8 +11,9 @@ const router = createBrowserRouter(
 			<Route path='/' element={<Home/>}></Route>
 			<Route path='/colecao' element={<Colecao/>}></Route>
 			<Route path='/login' element={<Login/>}></Route>
-			<Route path='/detalhar' element={<DetalharSuculenta/>}></Route>
-			<Route path='/cadastrar' element={<CadastrarSuculenta/>}></Route>
+			<Route path='/colecao/:id' element={<DetalharSuculenta/>}></Route>
+			<Route path='/colecao/cadastrar' element={<CadastrarSuculenta/>}></Route>
+			<Route path='/colecao/editar/:id' element={<CadastrarSuculenta/>}></Route>
 		</Route>
 	)
 );
