@@ -21,8 +21,11 @@ function Login() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const res = await verificaLogin(formularioLogin);
-		console.log(res);
+		
 		setToken(res);
+
+		console.log('ENTROU!!!!!!!!!!!!!!!!!!!');
+		window.location.assign('/colecao');
 	};
 
 

@@ -3,35 +3,32 @@ import Footer from '../components/Footer';
 import '../style/Styles.css';
 import { findAllSuculentas } from '../api/SuculentaApi.js';
 import { useEffect, useState } from 'react';
-// import { getToken } from '../hook/useToken';
+import { getToken } from '../hook/useToken';
 
 
 function Colecao() {
-	// const token = getToken();
-
+	const token = getToken();
 
 	const [suculentas, setSuculentas] = useState([]);
-	const [search, setSearch] = useState('');
-	console.log(search);
-
 	
+	const [pesquisa, setPesquisa] = useState('');
 
 	const loadingData = async () => {
-		// findAllSuculentas(setSuculentas, 'colecao', token);
-		findAllSuculentas(setSuculentas, 'colecao');
+		findAllSuculentas(setSuculentas, 'colecao', token);
 	};
 
 	useEffect(() => {
-		// if(token != null)
-		loadingData();
-		// else
-		// window.location.assign('/login');
+		if(token != null)
+			loadingData();
+		else
+			window.location.assign('/login');
 	}, []);
 
 	const handleSearch = (e) =>{
-		setSearch(e.target.value);
+		setPesquisa(e.target.value);
 	};
 
+	console.log('suculentas: ', suculentas);
 	return (
 		<>
 			<Header/>
@@ -53,12 +50,13 @@ function Colecao() {
 								<th scope="col">#</th>
 								<th scope="col">Nome popular</th>
 								<th scope="col">Nome científico</th>
-								<th scope="col">Maiores informações</th>
+								<th scope="col"></th>
 							</tr>
 						</thead>
 						<tbody>
+							
 							{suculentas.filter((suculenta) => {
-								return search.toLowerCase() === '' ? suculenta : suculenta.nome_popular.toLowerCase().includes(search);
+								return pesquisa.toLowerCase() === '' ? suculenta : suculenta.nome_popular.toLowerCase().includes(pesquisa.toLowerCase());
 							}).map((suculenta) => {
 								return (
 									<tr key={suculenta.id}>
@@ -67,7 +65,7 @@ function Colecao() {
 										<td>{suculenta.nome_cientifico}</td>
 										<td>
 											<button className="btn">
-												<a href={`/colecao/${suculenta.id}`} >{/* <i className="fa-regular fa-circle-info"></i> */}Detalhar</a>
+												<a href={`/colecao/${suculenta.id}`} >Detalhar</a>
 											</button>
 										</td>
 									</tr>

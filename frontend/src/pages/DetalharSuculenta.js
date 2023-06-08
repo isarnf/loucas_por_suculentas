@@ -7,7 +7,6 @@ import { useParams } from 'react-router-dom';
 
 
 function DetalharSuculenta() {
-	// const {id, nome_popular, nome_cientifico, data_aquisicao, cor} = useParams();
 	const {id} = useParams();
 
 	

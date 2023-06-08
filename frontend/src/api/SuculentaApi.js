@@ -1,13 +1,23 @@
 const baseUrl = 'http://localhost:12345';
 
+export const verificaLogin = async(data) => {
+	return fetch(`${baseUrl}/login`,
+		{
+			method: 'POST',
+			body: JSON.stringify(data),
+			headers: { 'Content-type': 'application/json; charset=UTF-8' }
+		}).then(async response => {
+		const res = await response.json();
+		return res;
+	}).catch(err => {
+		console.log(err);
+	});
+};
 
-// export const findAllSuculentas = async (setData, uri, token) => {
-export const findAllSuculentas = async (setData, uri) => {
-
-	// console.log(token);
+export const findAllSuculentas = async (setData, uri, token) => {
 	await fetch(`${baseUrl}/${uri}`, { 
 		method: 'GET',
-		// authorization: `Bearer ${token}`
+		authorization: `Bearer ${token}`
 	}).then(async response => {
 		console.log(response);
 		const data = (await response.json());
@@ -65,17 +75,5 @@ export const deleteSuculenta = async (id) => {
 	});
 };
 
-export const verificaLogin = async(data) => {
-	return fetch(`${baseUrl}/login`,
-		{
-			method: 'POST',
-			body: JSON.stringify(data),
-			headers: { 'Content-type': 'application/json; charset=UTF-8' }
-		}).then(async response => {
-		const res = await response.json();
-		return res;
-	}).catch(err => {
-		console.log(err);
-	});
-};
+
 

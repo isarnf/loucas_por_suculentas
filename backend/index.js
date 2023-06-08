@@ -37,7 +37,6 @@ app.post("/login", (req, res) => {
 
 function verificaToken(req, res, next) {
     const token = req.headers["x-access-token"];
-    console.log(token);
     if (!token)
         return res.status(401).json({ auth: false, mensagem: "Token não informado" });
     const publicKey = fs.readFileSync("./public.key", "utf8");
@@ -56,8 +55,7 @@ function verificaToken(req, res, next) {
     );
 }
 
-//lembrar de adicionar o verificaToken após colecao!! 
-app.get("/colecao", async (req, res) => {
+app.get("/colecao", verificaToken, async (req, res) => {
     console.log(`Listando todas as suculentas...`);
     res.status(200).send(await suculenta.findAll(req.body));
 });
