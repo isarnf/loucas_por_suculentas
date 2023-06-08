@@ -2,8 +2,30 @@ import '../style/Styles.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import loginImage from '../images/imgLogin3.jpg';
+import { useState  } from 'react';
+import { verificaLogin } from '../api/SuculentaApi';
+import { setToken } from '../hook/useToken';
+
 
 function Login() {
+	const [formularioLogin, setFormularioLogin] = useState({
+		email: '',
+		senha: ''
+	});
+
+	const handleChange = (e) => { setFormularioLogin(values => (
+		{ ...values, 
+			[e.target.name]: e.target.value }
+	));};
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		const res = await verificaLogin(formularioLogin);
+		console.log(res);
+		setToken(res);
+	};
+
+
 	return (
 		<>
 			<Header/>
@@ -16,21 +38,18 @@ function Login() {
 								<form>
                     
 									<div className="form-outline mb-4">
-										<input type="email" id="" className="form-control" />
+										<input type="email" name="email" onChange={handleChange} className="form-control" />
 										<label className="form-label" htmlFor="">E-mail</label>
 									</div>
 
 									<div className="form-outline mb-4">
-										<input type="password" id="" className="form-control" />
+										<input type="password" name="senha" onChange={handleChange} className="form-control" />
 										<label className="form-label" htmlFor="">Senha</label>
 									</div>
 
                         
-									<button type="submit" className="btn btn-estilizado btn-block mb-4 me-3">
+									<button type="submit" onClick={handleSubmit} className="btn btn-estilizado btn-block mb-4 me-3">
                             Entrar
-									</button>
-									<button type="submit" className="btn btn-estilizado btn-block mb-4">
-                            Registrar
 									</button>
 								</form>
 							</div>

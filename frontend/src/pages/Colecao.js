@@ -3,18 +3,34 @@ import Footer from '../components/Footer';
 import '../style/Styles.css';
 import { findAllSuculentas } from '../api/SuculentaApi.js';
 import { useEffect, useState } from 'react';
+// import { getToken } from '../hook/useToken';
 
 
 function Colecao() {
+	// const token = getToken();
+
+
 	const [suculentas, setSuculentas] = useState([]);
+	const [search, setSearch] = useState('');
+	console.log(search);
+
+	
 
 	const loadingData = async () => {
+		// findAllSuculentas(setSuculentas, 'colecao', token);
 		findAllSuculentas(setSuculentas, 'colecao');
 	};
 
 	useEffect(() => {
+		// if(token != null)
 		loadingData();
+		// else
+		// window.location.assign('/login');
 	}, []);
+
+	const handleSearch = (e) =>{
+		setSearch(e.target.value);
+	};
 
 	return (
 		<>
@@ -23,15 +39,12 @@ function Colecao() {
 			<div className="colecao">
 				<h1 className="text-center pt-4">Coleção</h1>
 				<div className="tabela">
-					<button className="btn me-2 btn-estilizado"><a  href="/colecao/cadastrar">Cadastrar nova suculenta</a></button>
-					<br/><br/>
+					
 					<div className="horizontal-group d-flex mb-5">
 						<form className="form-search d-flex">
-							<input type="hidden" name="column" value="name" />
-							<input name="value" type="text" placeholder="Pesquisar por suculenta" className="form-control pesquisa"/>
-							<button className="btn ms-2 me-2"><i className="fa-solid fa-magnifying-glass"></i></button>
+							<input name="value" type="text" placeholder="Pesquisar por suculenta" onChange={handleSearch} className="form-control pesquisa me-2"/>
 						</form>
-						<button className="btn me-2 btn-estilizado"><a  href="/colecao">Mostrar todas</a></button>
+						<button className="btn me-2 btn-estilizado"><a  href="/colecao/cadastrar">Cadastrar nova suculenta</a></button>
 					</div>
 				
 					<table className="table table-hover">
@@ -44,7 +57,9 @@ function Colecao() {
 							</tr>
 						</thead>
 						<tbody>
-							{suculentas.map((suculenta) => {
+							{suculentas.filter((suculenta) => {
+								return search.toLowerCase() === '' ? suculenta : suculenta.nome_popular.toLowerCase().includes(search);
+							}).map((suculenta) => {
 								return (
 									<tr key={suculenta.id}>
 										<td scope="row">{suculenta.id}</td>

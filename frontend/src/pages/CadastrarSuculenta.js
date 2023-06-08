@@ -47,19 +47,19 @@ function CadastrarSuculenta() {
 						<label className="form-label" htmlFor="">Imagem</label>
 					</div> */}
 					<div className="form-outline mb-4 mt-5">
-						<input type="text" id="" value={formulario.nome_popular} name="nome_popular" onChange={handleChange} className="form-control" />
+						<input type="text" value={formulario.nome_popular} name="nome_popular" onChange={handleChange} className="form-control" />
 						<label className="form-label" htmlFor="">Nome popular</label>
 					</div>
 					<div className="form-outline mb-4 mt-5">
-						<input type="text" id="" value={formulario.nome_cientifico} name="nome_cientifico" onChange={handleChange} className="form-control" />
+						<input type="text" value={formulario.nome_cientifico} name="nome_cientifico" onChange={handleChange} className="form-control" />
 						<label className="form-label" htmlFor="">Nome científico</label>
 					</div>
 					<div className="form-outline mb-4 mt-5">
-						<input type="text" id="" value={formulario.data_aquisicao} name="data_aquisicao" onChange={handleChange} className="form-control" />
+						<input type="text" value={formulario.data_aquisicao} name="data_aquisicao" onChange={handleChange} className="form-control" />
 						<label className="form-label" htmlFor="">Data aquisição</label>
 					</div>
 					<div className="form-outline mb-4 mt-5">
-						<input type="text" id="" value={formulario.cor} name="cor" onChange={handleChange} className="form-control" />
+						<input type="text" value={formulario.cor} name="cor" onChange={handleChange} className="form-control" />
 						<label className="form-label" htmlFor="">Cor</label>
 					</div>
 
