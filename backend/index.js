@@ -36,7 +36,7 @@ app.post("/login", (req, res) => {
 })
 
 function verificaToken(req, res, next) {
-    const token = req.headers["x-access-token"];
+    const token = req.headers.authorization?.split(' ')[1];
     if (!token)
         return res.status(401).json({ auth: false, mensagem: "Token não informado" });
     const publicKey = fs.readFileSync("./public.key", "utf8");

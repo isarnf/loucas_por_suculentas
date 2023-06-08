@@ -10,6 +10,8 @@ function Colecao() {
 	const token = getToken();
 
 	const [suculentas, setSuculentas] = useState([]);
+
+	console.log(suculentas);
 	
 	const [pesquisa, setPesquisa] = useState('');
 
@@ -22,7 +24,7 @@ function Colecao() {
 			loadingData();
 		else
 			window.location.assign('/login');
-	}, []);
+	}, [token]);
 
 	const handleSearch = (e) =>{
 		setPesquisa(e.target.value);
@@ -55,7 +57,7 @@ function Colecao() {
 						</thead>
 						<tbody>
 							
-							{suculentas.filter((suculenta) => {
+							{Array.isArray(suculentas) ? suculentas?.filter((suculenta) => {
 								return pesquisa.toLowerCase() === '' ? suculenta : suculenta.nome_popular.toLowerCase().includes(pesquisa.toLowerCase());
 							}).map((suculenta) => {
 								return (
@@ -70,7 +72,7 @@ function Colecao() {
 										</td>
 									</tr>
 								);
-							})}
+							}) : null}
 						</tbody>
 					</table>
 				</div>

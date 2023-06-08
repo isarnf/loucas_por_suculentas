@@ -17,7 +17,9 @@ export const verificaLogin = async(data) => {
 export const findAllSuculentas = async (setData, uri, token) => {
 	await fetch(`${baseUrl}/${uri}`, { 
 		method: 'GET',
-		authorization: `Bearer ${token}`
+		headers: {
+			authorization: `Bearer ${token}`,
+		},
 	}).then(async response => {
 		console.log(response);
 		const data = (await response.json());
