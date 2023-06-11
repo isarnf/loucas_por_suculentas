@@ -2,6 +2,8 @@ import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} fr
 import Home from './pages/Home.js';
 import Colecao from './pages/Colecao.js';
 import Login from './pages/Login.js';
+import Logado from './pages/Logado.js';
+import Logout from './pages/Logout.js';
 import DetalharSuculenta from './pages/DetalharSuculenta.js';
 import CadastrarSuculenta from './pages/CadastrarSuculenta.js';
 
@@ -9,11 +11,13 @@ const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route>
 			<Route path='/' element={<Home/>}></Route>
-			<Route path='/colecao' element={<Colecao/>}></Route>
 			<Route path='/login' element={<Login/>}></Route>
+			<Route path='/colecao' element={<Colecao/>}></Route>
 			<Route path='/colecao/:id' element={<DetalharSuculenta/>}></Route>
 			<Route path='/colecao/cadastrar' element={<CadastrarSuculenta/>}></Route>
 			<Route path='/colecao/editar/:id' element={<CadastrarSuculenta/>}></Route>
+			<Route path='/logado' element={<Logado/>}></Route>
+			<Route path='/logout' element={<Logout/>}></Route>
 		</Route>
 	)
 );

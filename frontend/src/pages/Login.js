@@ -8,6 +8,8 @@ import { setToken } from '../hook/useToken';
 
 
 function Login() {
+
+
 	const [formularioLogin, setFormularioLogin] = useState({
 		email: '',
 		senha: ''
@@ -23,10 +25,9 @@ function Login() {
 		const res = await verificaLogin(formularioLogin);
 		
 		setToken(res);
-
-		console.log('ENTROU!!!!!!!!!!!!!!!!!!!');
 		window.location.assign('/colecao');
 	};
+
 
 
 	return (
@@ -51,7 +52,7 @@ function Login() {
 									</div>
 
                         
-									<button type="submit" onClick={handleSubmit} className="btn btn-estilizado btn-block mb-4 me-3">
+									<button type="submit" onClick={handleSubmit} className="btn btn-estilizado btn-block mb-4">
                             Entrar
 									</button>
 								</form>

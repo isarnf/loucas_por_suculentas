@@ -32,8 +32,16 @@ app.post("/login", (req, res) => {
         
     }else{
         res.status(403).json({ auth: false, mensagem: "Usuário ou senha inválidos!" });
-    }  
+    }
+    
+      
 })
+
+app.post('/logout', function(req, res) { 
+    console.log("Logout realizado e token cancelado!");
+    res.status(200).send({ auth: false, token: null }); 
+});
+
 
 function verificaToken(req, res, next) {
     const token = req.headers.authorization?.split(' ')[1];
@@ -54,6 +62,7 @@ function verificaToken(req, res, next) {
         }
     );
 }
+
 
 app.get("/colecao", verificaToken, async (req, res) => {
     console.log(`Listando todas as suculentas...`);
@@ -110,6 +119,15 @@ app.get("/colecao/:id", async(req, res) => {
     }
     
 });
+
+
+// function destroyToken(req, res) {
+//     const token = req.headers.authorization?.split(' ')[1];
+//     if (!token)
+//         return res.status(401).json({ auth: false, mensagem: "Token não informado" });
+//     jwt.destroy(token);
+//     console.log('token destruido');
+// }
 
 async function start() {
     await suculenta.sync();

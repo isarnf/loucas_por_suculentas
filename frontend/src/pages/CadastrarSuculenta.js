@@ -25,6 +25,13 @@ function CadastrarSuculenta() {
 			[e.target.name]: e.target.value }
 	));};
 
+	const handleChangeDate = (e) => {
+		if(Date.parse(e.target.value) < Date.now()){
+			setFormulario(values => ({...values, ['data_aquisicao']:e.target.value}));
+		}
+
+	};
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (id != null)
@@ -41,11 +48,6 @@ function CadastrarSuculenta() {
 			<Header/>
 			<div className="cadastrarSuculenta">
 				<form>
-					{/* <div className="form-outline mb-4 mt-5 ">
-						<input type="file" name="myImage" accept="image/png, image/gif, image/jpeg" />
-						<br/><br/>
-						<label className="form-label" htmlFor="">Imagem</label>
-					</div> */}
 					<div className="form-outline mb-4 mt-5">
 						<input type="text" value={formulario.nome_popular} name="nome_popular" onChange={handleChange} className="form-control" />
 						<label className="form-label" htmlFor="">Nome popular</label>
@@ -55,7 +57,7 @@ function CadastrarSuculenta() {
 						<label className="form-label" htmlFor="">Nome científico</label>
 					</div>
 					<div className="form-outline mb-4 mt-5">
-						<input type="text" value={formulario.data_aquisicao} name="data_aquisicao" onChange={handleChange} className="form-control" />
+						<input type="date" value={formulario.data_aquisicao} name="data_aquisicao" onChange={handleChangeDate} className="form-control" />
 						<label className="form-label" htmlFor="">Data aquisição</label>
 					</div>
 					<div className="form-outline mb-4 mt-5">

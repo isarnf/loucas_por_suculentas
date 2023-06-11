@@ -10,8 +10,6 @@ function Colecao() {
 	const token = getToken();
 
 	const [suculentas, setSuculentas] = useState([]);
-
-	console.log(suculentas);
 	
 	const [pesquisa, setPesquisa] = useState('');
 
@@ -30,7 +28,6 @@ function Colecao() {
 		setPesquisa(e.target.value);
 	};
 
-	console.log('suculentas: ', suculentas);
 	return (
 		<>
 			<Header/>
@@ -43,7 +40,7 @@ function Colecao() {
 						<form className="form-search d-flex">
 							<input name="value" type="text" placeholder="Pesquisar por suculenta" onChange={handleSearch} className="form-control pesquisa me-2"/>
 						</form>
-						<button className="btn me-2 btn-estilizado"><a  href="/colecao/cadastrar">Cadastrar nova suculenta</a></button>
+						<button className="btn me-2 btn-estilizado "><a className="btn-link"  href="/colecao/cadastrar">Cadastrar nova suculenta</a></button>
 					</div>
 				
 					<table className="table table-hover">
@@ -67,7 +64,7 @@ function Colecao() {
 										<td>{suculenta.nome_cientifico}</td>
 										<td>
 											<button className="btn">
-												<a href={`/colecao/${suculenta.id}`} >Detalhar</a>
+												<a className="btn-link" href={`/colecao/${suculenta.id}`} >Detalhar</a>
 											</button>
 										</td>
 									</tr>

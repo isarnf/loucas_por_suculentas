@@ -74,6 +74,10 @@ a{
 	color: black;
 }
 
+.btn-estilizado:active{
+  box-shadow: 0 0 10px #e7e8e6;
+}
+
 .bgLogin{
   background-image: url("../images/backgroundLogin.jpg");
   background-repeat: no-repeat;
@@ -129,3 +133,13 @@ a{
 .cadastrarSuculenta{
   margin: 50px;
 }
+
+.btn-link{
+  text-decoration: none;
+  color: black;
+}
+.btn-link:hover{
+  text-decoration: none;
+  color: rgb(60, 60, 60);
+}
+

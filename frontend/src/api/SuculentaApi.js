@@ -77,5 +77,17 @@ export const deleteSuculenta = async (id) => {
 	});
 };
 
+export const destruirToken = async() => {
+	return fetch(`${baseUrl}/logout`,
+		{
+		
+		}).then(async response => {
+		const res = await response.json();
+		return res;
+	}).catch(err => {
+		console.log(err);
+	});
+};
+
 
 

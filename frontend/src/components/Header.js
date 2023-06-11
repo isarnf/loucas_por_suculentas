@@ -1,7 +1,36 @@
 import succulent from '../images/succulent5.png';
 import succulentLogo from '../images/suculentaLogo.png';
 
+import { getToken } from '../hook/useToken';
+
 export default function Header(){
+	const token = getToken();
+	
+	const handleClickColecao = () => {
+
+		if(token != null)
+			window.location.assign('/colecao');
+		else
+			window.location.assign('/login');
+	};
+
+	const handleClickLogin = () => {
+
+		if(token != null)
+			window.location.assign('/logado');
+		else
+			window.location.assign('/login');
+	};
+
+	const handleClickLogout = () => {
+
+		if(token != null)
+			window.location.assign('/logout');
+		else
+			window.location.assign('/login');
+	};
+
+
 	return (
 		<>
 			<header>
@@ -15,22 +44,25 @@ export default function Header(){
 								<img src={succulentLogo} alt="" width="230" height="60"/>
 							</a>
 						</div>
+		
 						<div className="collapse navbar-collapse me-5" id="navbarSupportedContent">
 							<ul className="navbar-nav me-auto mb-2 mb-lg-0">
 								<li className="nav-item">
-									<a className="nav-link active" aria-current="page" href="/">Home</a>
+									<a className="nav-link " aria-current="page" href="/">Home</a>
 								</li>
 								<li className="nav-item">
-									<a className="nav-link" aria-current="page" href="/colecao">Coleção</a>
+									<a className="nav-link" aria-current="page" onClick={handleClickColecao} href="/colecao">Coleção</a>
 								</li>
 								<li className="nav-item">
-									<a className="nav-link" href="/login">Login</a>
+									<a className="nav-link" onClick={handleClickLogin} href="/login">Login</a>
 								</li>
-								{/* <li className="nav-item">
-									<a className="nav-link" href="/logout">Logout</a>
-								</li> */}
+								
+								<li className="nav-item">
+									<a className="nav-link" onClick={handleClickLogout} href="/logout">Logout</a>
+								</li>
 							</ul>
 						</div>
+						
 					</div>
 				</nav>
 			</header>
