@@ -16,8 +16,6 @@ const router = createBrowserRouter(
 			<Route path='/colecao/:id' element={<DetalharSuculenta/>}></Route>
 			<Route path='/colecao/cadastrar' element={<CadastrarSuculenta/>}></Route>
 			<Route path='/colecao/editar/:id' element={<CadastrarSuculenta/>}></Route>
-			<Route path='/logado' element={<Logado/>}></Route>
-			<Route path='/logout' element={<Logout/>}></Route>
 		</Route>
 	)
 );

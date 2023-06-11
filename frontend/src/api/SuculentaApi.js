@@ -54,7 +54,7 @@ export const createSuculenta = async (data) => {
 };
 
 export const updateSuculenta = async (id, data) => {
-	fetch(`${baseUrl}/'colecao'/editar/${id}`,
+	fetch(`${baseUrl}/colecao/editar/${id}`,
 		{
 			method: 'PATCH',
 			body: JSON.stringify(data),
@@ -80,7 +80,7 @@ export const deleteSuculenta = async (id) => {
 export const destruirToken = async() => {
 	return fetch(`${baseUrl}/logout`,
 		{
-		
+			method: 'POST'
 		}).then(async response => {
 		const res = await response.json();
 		return res;

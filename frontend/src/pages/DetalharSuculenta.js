@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import { deleteSuculenta, findOneSuculenta } from '../api/SuculentaApi.js';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import 'moment' from moment;
 
 
 function DetalharSuculenta() {
@@ -15,6 +16,15 @@ function DetalharSuculenta() {
 
 	const loadingData = async () => {
 		findOneSuculenta(setSuculenta, id);
+		console.log(suculenta.values);
+		// setSuculenta(values => ({
+		// 	...values, ['data_aquisicao']:values.data_aquisicao.slice(0,9)
+		// }));
+		
+		setSuculenta(values => ({
+			...values, ['data_aquisicao']:moment.utc(values.data_aquisicao).format('MM/DD/YYYY')
+		}));
+		
 	};
 
 	useEffect(() => {

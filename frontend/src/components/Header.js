@@ -1,7 +1,8 @@
 import succulent from '../images/succulent5.png';
 import succulentLogo from '../images/suculentaLogo.png';
 
-import { getToken } from '../hook/useToken';
+import { getToken, setToken } from '../hook/useToken';
+import { destruirToken } from '../api/SuculentaApi';
 
 export default function Header(){
 	const token = getToken();
@@ -25,9 +26,8 @@ export default function Header(){
 	const handleClickLogout = () => {
 
 		if(token != null)
-			window.location.assign('/logout');
-		else
-			window.location.assign('/login');
+			setToken(destruirToken());
+		window.location.assign('/login');
 	};
 
 
@@ -53,13 +53,22 @@ export default function Header(){
 								<li className="nav-item">
 									<a className="nav-link" aria-current="page" onClick={handleClickColecao} href="/colecao">Coleção</a>
 								</li>
-								<li className="nav-item">
-									<a className="nav-link" onClick={handleClickLogin} href="/login">Login</a>
-								</li>
+								{
+									(!token) ? 
+										<li className="nav-item">
+											<a className="nav-link" onClick={handleClickLogin} href="/login">Login</a>
+										</li> :
+										<></>
+								}
 								
-								<li className="nav-item">
-									<a className="nav-link" onClick={handleClickLogout} href="/logout">Logout</a>
-								</li>
+								{
+									(token) ? 
+										<li className="nav-item">
+											<a className="nav-link" onClick={handleClickLogout} >Logout</a>
+										</li> :
+										<></>
+								}
+								
 							</ul>
 						</div>
 						

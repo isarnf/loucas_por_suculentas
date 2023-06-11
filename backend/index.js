@@ -24,7 +24,7 @@ app.post("/login", (req, res) => {
     if(email == usuario.email && senha == usuario.senha){
         const privateKey = fs.readFileSync("./private.key", "utf8");
         const token = jwt.sign({ email, senha }, privateKey, {
-            expiresIn: 60,
+            // expiresIn: 900,
             algorithm: "RS256"
         })
         console.log("Token criado")
@@ -33,15 +33,12 @@ app.post("/login", (req, res) => {
     }else{
         res.status(403).json({ auth: false, mensagem: "Usuário ou senha inválidos!" });
     }
-    
-      
 })
 
 app.post('/logout', function(req, res) { 
     console.log("Logout realizado e token cancelado!");
-    res.status(200).send({ auth: false, token: null }); 
+    res.status(200).json({ auth: false, token: null }); 
 });
-
 
 function verificaToken(req, res, next) {
     const token = req.headers.authorization?.split(' ')[1];
@@ -78,7 +75,7 @@ app.post("/colecao/cadastrar", async(req,res)=>{
     }
 });
 
-app.put("/colecao/editar/:id", async(req, res) => {
+app.patch("/colecao/editar/:id", async(req, res) => {
     console.log(`Editando suculenta: ${req.body.id}) ${req.body.nome_popular}`)
     try{
         const suculenta_a_editar = suculenta.findByPk(req.params.id);

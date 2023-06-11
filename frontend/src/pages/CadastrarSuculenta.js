@@ -34,6 +34,7 @@ function CadastrarSuculenta() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		console.log(formulario);
 		if (id != null)
 			updateSuculenta(id, formulario);
 		else
