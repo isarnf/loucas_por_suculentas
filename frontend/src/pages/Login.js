@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import loginImage from '../images/imgLogin3.jpg';
 import { useState  } from 'react';
-import { verificaLogin } from '../api/SuculentaApi';
+import { logar } from '../api/SuculentaApi';
 import { setToken } from '../hook/useToken';
 
 
@@ -22,7 +22,7 @@ function Login() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		const res = await verificaLogin(formularioLogin);
+		const res = await logar(formularioLogin);
 		
 		setToken(res);
 		window.location.assign('/colecao');

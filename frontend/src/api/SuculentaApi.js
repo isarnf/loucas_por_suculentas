@@ -1,6 +1,7 @@
+import moment from 'moment';
 const baseUrl = 'http://localhost:12345';
 
-export const verificaLogin = async(data) => {
+export const logar = async(data) => {
 	return fetch(`${baseUrl}/login`,
 		{
 			method: 'POST',
@@ -29,21 +30,27 @@ export const findAllSuculentas = async (setData, uri, token) => {
 	});
 };
 
-export const findOneSuculenta = async (setData, id) => {
-	fetch(`${baseUrl}/colecao/${id}`, { method: 'GET' })
+export const findOneSuculenta = async (setData, id, token) => {
+	await fetch(`${baseUrl}/colecao/${id}`, { 
+		method: 'GET',
+		authorization: `Bearer ${token}`
+	})
 		.then(async response => {
 			console.log(response);
 			const data = (await response.json());
-			setData(data);
+			let suculenta = data;
+			suculenta.data_aquisicao = moment(suculenta.data_aquisicao).format('YYYY-MM-DD');
+			setData(suculenta);
 		}).catch(err => {
 			console.log(err);
 		});
 };
 
-export const createSuculenta = async (data) => {
+export const createSuculenta = async (data, token) => {
 	fetch(`${baseUrl}/colecao/cadastrar`,
 		{
 			method: 'POST',
+			authorization: `Bearer ${token}`,
 			body: JSON.stringify(data),
 			headers: { 'Content-type': 'application/json; charset=UTF-8' }
 		}).then(response => {
@@ -53,10 +60,11 @@ export const createSuculenta = async (data) => {
 	});
 };
 
-export const updateSuculenta = async (id, data) => {
+export const updateSuculenta = async (id, data, token) => {
 	fetch(`${baseUrl}/colecao/editar/${id}`,
 		{
 			method: 'PATCH',
+			authorization: `Bearer ${token}`,
 			body: JSON.stringify(data),
 			headers: { 'Content-type': 'application/json; charset=UTF-8' }
 		}).then(response => {
@@ -66,10 +74,11 @@ export const updateSuculenta = async (id, data) => {
 	});
 };
 
-export const deleteSuculenta = async (id) => {
+export const deleteSuculenta = async (id, token) => {
 	fetch(`${baseUrl}/colecao/deletar/${id}`,
 		{
 			method: 'DELETE',
+			authorization: `Bearer ${token}`,
 		}).then(response => {
 		console.log(response);
 	}).catch(err => {

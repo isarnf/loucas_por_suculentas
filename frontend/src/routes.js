@@ -2,8 +2,6 @@ import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} fr
 import Home from './pages/Home.js';
 import Colecao from './pages/Colecao.js';
 import Login from './pages/Login.js';
-import Logado from './pages/Logado.js';
-import Logout from './pages/Logout.js';
 import DetalharSuculenta from './pages/DetalharSuculenta.js';
 import CadastrarSuculenta from './pages/CadastrarSuculenta.js';
 

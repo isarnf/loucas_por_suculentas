@@ -5,8 +5,12 @@ import { useState } from 'react';
 import { createSuculenta, findOneSuculenta, updateSuculenta } from '../api/SuculentaApi';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import {getToken} from '../hook/useToken';
+
+
 
 function CadastrarSuculenta() {
+	const token = getToken();
 	const {id} = useParams();
 	const [formulario, setFormulario] = useState({
 		nome_popular: '',
@@ -16,8 +20,10 @@ function CadastrarSuculenta() {
 	});
 
 	useEffect(() => {
-		if (id != null)
-			findOneSuculenta(setFormulario, id);
+		if (id != null){
+			findOneSuculenta(setFormulario, id, token);
+
+		}
 	},[id]);
 
 	const handleChange = (e) => { setFormulario(values => (
@@ -29,6 +35,7 @@ function CadastrarSuculenta() {
 		if(Date.parse(e.target.value) < Date.now()){
 			setFormulario(values => ({...values, ['data_aquisicao']:e.target.value}));
 		}
+		
 
 	};
 
@@ -36,9 +43,9 @@ function CadastrarSuculenta() {
 		e.preventDefault();
 		console.log(formulario);
 		if (id != null)
-			updateSuculenta(id, formulario);
+			updateSuculenta(id, formulario, token);
 		else
-			createSuculenta(formulario);
+			createSuculenta(formulario, token);
 		window.location.assign('/colecao');
 	};
 

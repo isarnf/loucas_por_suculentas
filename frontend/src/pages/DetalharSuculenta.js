@@ -4,10 +4,12 @@ import Footer from '../components/Footer';
 import { deleteSuculenta, findOneSuculenta } from '../api/SuculentaApi.js';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import 'moment' from moment;
+import { getToken } from '../hook/useToken';
+import moment from 'moment';
 
 
 function DetalharSuculenta() {
+	const token = getToken();
 	const {id} = useParams();
 
 	
@@ -15,15 +17,10 @@ function DetalharSuculenta() {
 
 
 	const loadingData = async () => {
-		findOneSuculenta(setSuculenta, id);
-		console.log(suculenta.values);
-		// setSuculenta(values => ({
-		// 	...values, ['data_aquisicao']:values.data_aquisicao.slice(0,9)
-		// }));
-		
+		await findOneSuculenta(setSuculenta, id, token);
 		setSuculenta(values => ({
-			...values, ['data_aquisicao']:moment.utc(values.data_aquisicao).format('MM/DD/YYYY')
-		}));
+			...values, ['data_aquisicao']:moment(values.data_aquisicao, 'YYYY-MM-DD').format('DD/MM/YYYY')
+		}) );
 		
 	};
 
@@ -36,7 +33,7 @@ function DetalharSuculenta() {
 	};
 
 	const handleDelete = () => {
-		deleteSuculenta(id);
+		deleteSuculenta(id, token);
 		window.location.assign('/colecao');
 	};
 	
