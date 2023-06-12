@@ -8,10 +8,10 @@ import { useEffect } from 'react';
 import {getToken} from '../hook/useToken';
 
 
-
 function CadastrarSuculenta() {
 	const token = getToken();
 	const {id} = useParams();
+
 	const [formulario, setFormulario] = useState({
 		nome_popular: '',
 		nome_cientifico: '',
@@ -19,29 +19,31 @@ function CadastrarSuculenta() {
 		cor: '',
 	});
 
+
 	useEffect(() => {
 		if (id != null){
 			findOneSuculenta(setFormulario, id, token);
-
 		}
 	},[id]);
 
+
 	const handleChange = (e) => { setFormulario(values => (
 		{ ...values, 
-			[e.target.name]: e.target.value }
-	));};
+			[e.target.name]: e.target.value 
+		}
+	));
+	};
+
 
 	const handleChangeDate = (e) => {
 		if(Date.parse(e.target.value) < Date.now()){
 			setFormulario(values => ({...values, ['data_aquisicao']:e.target.value}));
 		}
-		
-
 	};
+
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log(formulario);
 		if (id != null)
 			updateSuculenta(id, formulario, token);
 		else
@@ -50,11 +52,16 @@ function CadastrarSuculenta() {
 	};
 
 
+	const handleCancel = (e) => {
+		e.preventDefault();
+		window.location.assign('/colecao');
+	};
+
 
 	return (
 		<>
 			<Header/>
-			<div className="cadastrarSuculenta">
+			<div className="cadastrarSuculenta ">
 				<form>
 					<div className="form-outline mb-4 mt-5">
 						<input type="text" value={formulario.nome_popular} name="nome_popular" onChange={handleChange} className="form-control" />
@@ -73,10 +80,9 @@ function CadastrarSuculenta() {
 						<label className="form-label" htmlFor="">Cor</label>
 					</div>
 
-					
 				
-					<button type="submit" onClick={handleSubmit} className="btn btn-estilizado btn-block mb-4">Enviar</button>
-	
+					<button type="submit" onClick={handleSubmit} className="btn btn-estilizado btn-block mb-4">Salvar</button>
+					<button type="submit" onClick={handleCancel} className="btn btn-estilizado btn-block mb-4 ms-2">Cancelar</button>
 					
 					
 				</form>

@@ -36,6 +36,11 @@ function DetalharSuculenta() {
 		deleteSuculenta(id, token);
 		window.location.assign('/colecao');
 	};
+
+	const handleCancel = (e) => {
+		e.preventDefault();
+		window.location.assign('/colecao');
+	};
 	
 	return (
 		<>
@@ -49,11 +54,12 @@ function DetalharSuculenta() {
 				<div className="infoSuculenta">
 					<>
 						<p><b>Nome popular:</b> {suculenta.nome_popular}</p>
-						<p><b>Nome científico:</b> {suculenta.nome_cientifico}</p>
+						<p><b>Nome científico:</b><i> {suculenta.nome_cientifico}</i></p>
 						<p><b>Data aquisição:</b> {suculenta.data_aquisicao}</p>
 						<p><b>Cor:</b> {suculenta.cor}</p>
 						<button className="btn me-2 btn-estilizado" onClick={handleUpdate}>Editar</button>
 						<button className="btn me-2 btn-estilizado" onClick={handleDelete}>Excluir</button>
+						<button className="btn btn-estilizado" onClick={handleCancel} >Cancelar</button>
 					</>
 
 				</div>

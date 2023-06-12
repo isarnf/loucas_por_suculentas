@@ -61,7 +61,7 @@ function Colecao() {
 									<tr key={suculenta.id}>
 										<td scope="row">{suculenta.id}</td>
 										<td>{suculenta.nome_popular}</td>
-										<td>{suculenta.nome_cientifico}</td>
+										<td><i>{suculenta.nome_cientifico}</i></td>
 										<td>
 											<button className="btn">
 												<a className="btn-link" href={`/colecao/${suculenta.id}`} >Detalhar</a>

@@ -1,4 +1,5 @@
 import moment from 'moment';
+
 const baseUrl = 'http://localhost:12345';
 
 export const logar = async(data) => {

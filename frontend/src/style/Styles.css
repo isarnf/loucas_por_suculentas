@@ -79,7 +79,6 @@ a{
 }
 
 .bgLogin{
-  background-image: url("../images/backgroundLogin.jpg");
   background-repeat: no-repeat;
   background-size:100% 100%;
   width: 600px;
@@ -105,7 +104,6 @@ a{
 }
 
 .form-control:focus {
-  /* box-shadow: 0 0 10px #afd58f; */
   box-shadow: 0 0 10px #e7e8e6;
   border-color:#bfc0c1;
 }
@@ -131,13 +129,16 @@ a{
 }
 
 .cadastrarSuculenta{
-  margin: 50px;
+  margin-top: 50px;
+  margin-left: 400px;
+  margin-right: 400px;
 }
 
 .btn-link{
   text-decoration: none;
   color: black;
 }
+
 .btn-link:hover{
   text-decoration: none;
   color: rgb(60, 60, 60);
